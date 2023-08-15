@@ -1,0 +1,107 @@
+import java.util.Scanner;
+
+public class BankingSystem {
+
+    private static Scanner scanner = new Scanner(System.in);
+
+    public static void main(String[] args) {
+        // Initialize the account balance
+        long balance = 10000;
+
+        // Display the main menu
+        while (true) {
+            System.out.println("Welcome to the Banking System!");
+            System.out.println("Please select an option:");
+            System.out.println("1. Transactions History");
+            System.out.println("2. Withdraw");
+            System.out.println("3. Deposit");
+            System.out.println("4. Transfer");
+            System.out.println("5. Quit");
+
+            // Get the user's selection
+            int selection = scanner.nextInt();
+
+            // Switch on the user's selection
+            switch (selection) {
+                case 1:
+                    // Display the transactions history
+                    displayTransactionsHistory(balance);
+                    break;
+                case 2:
+                    // Withdraw money
+                    withdrawMoney(balance);
+                    break;
+                case 3:
+                    // Deposit money
+                    depositMoney(balance);
+                    break;
+                case 4:
+                    // Transfer money
+                    transferMoney(balance);
+                    break;
+                case 5:
+                    // Quit the system
+                    System.out.println("Thank you for using the Banking System!");
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid selection!");
+            }
+        }
+    }
+
+    private static void displayTransactionsHistory(long balance) {
+        // TODO: Implement this method to display the transactions history
+    }
+
+    private static void withdrawMoney(long balance) {
+        // Get the amount to withdraw
+        System.out.println("Enter the amount to withdraw:");
+        long amount = scanner.nextLong();
+
+        // Check if the amount is valid
+        if (amount > balance) {
+            System.out.println("The amount you want to withdraw is greater than your balance.");
+            return;
+        }
+
+        // Subtract the amount from the balance
+        balance -= amount;
+
+        // Display the new balance
+        System.out.println("Your new balance is " + balance);
+    }
+
+    private static void depositMoney(long balance) {
+        // Get the amount to deposit
+        System.out.println("Enter the amount to deposit:");
+        long amount = scanner.nextLong();
+
+        // Add the amount to the balance
+        balance += amount;
+
+        // Display the new balance
+        System.out.println("Your new balance is " + balance);
+    }
+
+    private static void transferMoney(long balance) {
+        // Get the recipient's account number
+        System.out.println("Enter the recipient's account number:");
+        String recipientAccountNumber = scanner.next();
+
+        // Get the amount to transfer
+        System.out.println("Enter the amount to transfer:"); 
+        long amount = scanner.nextLong();
+
+        // Check if the amount is valid
+        if (amount > balance) {
+            System.out.println("The amount you want to transfer is greater than your balance.");
+            return;
+        }
+
+        // Transfer the money
+        balance -= amount;
+
+        // Display the new balance
+        System.out.println("Your new balance is " + balance);
+    }
+}
