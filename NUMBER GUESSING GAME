@@ -1,0 +1,41 @@
+import java.util.Random;
+
+public class NumberGuessingGame {
+
+    public static void main(String[] args) {
+        // Generate a random number between 1 and 100
+        Random random = new Random();
+        int number = random.nextInt(100) + 1;
+
+        // Set the number of attempts to 10
+        int attempts = 10;
+
+        // Start the game loop
+        while (attempts > 0) {
+            // Prompt the user to enter a guess
+            System.out.println("Guess a number between 1 and 100:");
+            int guess = Integer.parseInt(System.console().readLine());
+
+            // Check if the guess is correct
+            if (guess == number) {
+                System.out.println("You guessed correctly!");
+                break;
+            } else if (guess < number) {
+                System.out.println("Your guess is too low.");
+            } else {
+                System.out.println("Your guess is too high.");
+            }
+
+            // Decrement the number of attempts
+            attempts--;
+        }
+
+        // If the user has run out of attempts, display the correct number
+        if (attempts == 0) {
+            System.out.println("Sorry, you ran out of attempts. The correct number was " + number);
+        }
+
+        // Display the score
+        System.out.println("You scored " + (10 - attempts) + " points.");
+    }
+}
